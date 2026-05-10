@@ -42,7 +42,7 @@ const f1 =
 const fpr =
   FP / (FP + TN);
 
-console.log('\n=== Logs-Only Results ===\n');
+console.log('\n=== Tracing-Only Results ===\n');
 
 console.log(`TP: ${TP}`);
 console.log(`FP: ${FP}`);

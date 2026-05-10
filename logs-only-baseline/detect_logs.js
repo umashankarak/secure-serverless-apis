@@ -7,30 +7,33 @@ const suspiciousKeywords = [
   'UnknownEventSource'
 ];
 
-const logs = fs.readFileSync('logs.txt', 'utf8').split('\n');
+const events =
+  JSON.parse(fs.readFileSync('events.json', 'utf8'));
 
-let results = [];
+const results = [];
 
-logs.forEach((line) => {
-
-  if (!line.trim()) return;
-
-  const actual = line.startsWith('ATTACK')
-    ? 'ATTACK'
-    : 'BENIGN';
+events.forEach((event) => {
 
   let detected = 'BENIGN';
 
   for (const keyword of suspiciousKeywords) {
-    if (line.includes(keyword)) {
+
+    if (event.message.includes(keyword)) {
       detected = 'ATTACK';
       break;
     }
   }
 
-  results.push(`${actual},${detected}`);
+  results.push({
+    request_id: event.request_id,
+    actual: event.label,
+    predicted: detected
+  });
 });
 
-fs.writeFileSync('results.txt', results.join('\n'));
+fs.writeFileSync(
+  'results.json',
+  JSON.stringify(results, null, 2)
+);
 
-console.log('Detection completed');
+console.log('Logs-only detection completed');
