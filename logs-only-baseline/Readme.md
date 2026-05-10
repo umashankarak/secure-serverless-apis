@@ -93,7 +93,7 @@ This generates false positives and better reflects operational monitoring behavi
 # Folder Structure
 
 ```text
-Evaluation/
+logs-only-baseline/
 ├── generate_logs.js
 ├── detect_logs.js
 ├── metrics.js
