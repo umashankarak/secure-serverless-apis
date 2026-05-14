@@ -229,16 +229,17 @@ Example output from the current prototype:
 
 ```text
 === Logs-Only Results ===
+
 TP: 70
-FP: 74
-TN: 226
+FP: 40
+TN: 260
 FN: 30
 
-Accuracy: 0.74
-Precision: 0.49
-Recall: 0.70
-F1-score: 0.57
-False Positive Rate: 0.25
+Accuracy: 82.50%
+Precision: 63.64%
+Recall: 70.00%
+F1-score: 66.67%
+False Positive Rate: 13.33%
 ```
 
 ---
